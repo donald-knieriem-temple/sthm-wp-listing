@@ -1,9 +1,8 @@
-
-    
 {
     "name": "sthm/wp-listing",
     "description": "WordPress custom Job Listing post type",
     "type": "wordpress-plugin",
+    "version": "dev-master",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
