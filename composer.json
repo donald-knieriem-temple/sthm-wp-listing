@@ -1,5 +1,5 @@
 {
-    "name": "sthm/wp-listing",
+    "name": "sthm/sthm-wp-listing",
     "description": "WordPress custom Job Listing post type",
     "type": "wordpress-plugin",
     "version": "dev-master",
