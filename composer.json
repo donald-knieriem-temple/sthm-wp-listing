@@ -1,0 +1,17 @@
+
+    
+{
+    "name": "sthm/wp-listing",
+    "description": "WordPress custom Job Listing post type",
+    "type": "wordpress-plugin",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "composer/installers": "^1.0"
+    },
+    "license": "GPL-2.0+",
+    "authors": [{
+        "name": "Don Knieriem",
+        "email": "donald.knieriem@temple.edu"
+    }]
+}
