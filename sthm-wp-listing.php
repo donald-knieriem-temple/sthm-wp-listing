@@ -8,7 +8,7 @@ Description: Custom post type for STHM externship, internship, and assistantship
 // Our custom post type function
 function create_posttype() {
  
-    register_post_type( 'job_listing',
+    register_post_type( 'job_listings',
     // CPT Options
         array(
             'labels' => array(
@@ -17,7 +17,7 @@ function create_posttype() {
             ),
             'public' => true,
             'has_archive' => true,
-            'rewrite' => array('slug' => 'job_listing'),
+            'rewrite' => array('slug' => 'job_listings'),
         )
     );
 }
@@ -65,12 +65,14 @@ function custom_post_type() {
         'public'              => true,
         'show_ui'             => true,
         'show_in_menu'        => true,
+        'query_var'           => true,
+        'rewrite'             => array( 'slug' => 'job_listings'),
         'show_in_nav_menus'   => false,
         'show_in_admin_bar'   => true,
         'menu_position'       => 6,
-        'menu_icon'			  => 'dashicons-hammer',
+        'menu_icon'           => 'dashicons-hammer',
         'can_export'          => true,
-        'has_archive'         => true,
+        'has_archive'         => false,
         'exclude_from_search' => true,
         'publicly_queryable'  => false,
         'capability_type'     => 'post',
@@ -78,6 +80,7 @@ function custom_post_type() {
      
     // Registering your Custom Post Type
     register_post_type( 'job_listings', $args );
+    flush_rewrite_rules();
  
 }
  
