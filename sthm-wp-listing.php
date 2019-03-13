@@ -3,7 +3,6 @@
 Plugin Name: STHM Job Listings
 Description: Custom post type for STHM externship, internship, and assistantship listings
 */
-/* Start Adding Functions Below this Line */
 
 // Our custom post type function
 function create_posttype() {
@@ -80,7 +79,7 @@ function custom_post_type() {
      
     // Registering your Custom Post Type
     register_post_type( 'job_listings', $args );
-    flush_rewrite_rules();
+    //flush_rewrite_rules();
  
 }
  
@@ -91,5 +90,37 @@ function custom_post_type() {
  
 add_action( 'init', 'custom_post_type', 0 );
 
-/* Stop Adding Functions Below this Line */
+// create job listing taxonomy for the post type "job_listings"
+function create_job_taxonomies() {
+    // Add new taxonomy, make it hierarchical (like categories)
+    $labels = array(
+        'name'              => _x( 'Listing Types', 'taxonomy general name', 'twentyseventeen' ),
+        'singular_name'     => _x( 'Type', 'taxonomy singular name', 'twentyseventeen' ),
+        'search_items'      => __( 'Search Listing Types', 'twentyseventeen' ),
+        'all_items'         => __( 'All Types', 'twentyseventeen' ),
+        'parent_item'       => __( 'Parent Type', 'twentyseventeen' ),
+        'parent_item_colon' => __( 'Parent Type:', 'twentyseventeen' ),
+        'edit_item'         => __( 'Edit Type', 'twentyseventeen' ),
+        'update_item'       => __( 'Update Type', 'twentyseventeen' ),
+        'add_new_item'      => __( 'Add New Listing Type', 'twentyseventeen' ),
+        'new_item_name'     => __( 'New Type Name', 'twentyseventeen' ),
+        'menu_name'         => __( 'Listing Types', 'twentyseventeen' ),
+    );
+
+    $args = array(
+        'hierarchical'      => true,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array( 'slug' => 'listing_type' ),
+    );
+
+    register_taxonomy( 'listing_type', array( 'job_listings' ), $args );
+
+}
+
+// hook into the init action and call create_book_taxonomies when it fires
+add_action( 'init', 'create_job_taxonomies', 0 );
+
 ?>
