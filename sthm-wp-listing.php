@@ -4,24 +4,6 @@ Plugin Name: STHM Job Listings
 Description: Custom post type for STHM externship, internship, and assistantship listings
 */
 
-// Our custom post type function
-function create_posttype() {
- 
-    register_post_type( 'job_listings',
-    // CPT Options
-        array(
-            'labels' => array(
-                'name' => __( 'Job Listings' ),
-                'singular_name' => __( 'Job Listing' )
-            ),
-            'public' => true,
-            'has_archive' => true,
-            'rewrite' => array('slug' => 'job_listings'),
-        )
-    );
-}
-// Hooking up our function to theme setup
-add_action( 'init', 'create_posttype' );  
   
 /*
 * Creating a function to create our CPT
