@@ -13,8 +13,8 @@ function custom_post_type() {
  
 // Set UI labels for Custom Post Type
     $labels = array(
-        'name'                => _x( 'Job Listings', 'Post Type General Name', 'twentyseventeen' ),
-        'singular_name'       => _x( 'Job Listing', 'Post Type Singular Name', 'twentyseventeen' ),
+        'name'                => __( 'Job Listings', 'Post Type General Name', 'twentyseventeen' ),
+        'singular_name'       => __( 'Job Listing', 'Post Type Singular Name', 'twentyseventeen' ),
         'menu_name'           => __( 'Job Listings', 'twentyseventeen' ),
         'parent_item_colon'   => __( 'Parent Listing', 'twentyseventeen' ),
         'all_items'           => __( 'All Listings', 'twentyseventeen' ),
@@ -35,28 +35,28 @@ function custom_post_type() {
         'description'         => __( 'Job listings', 'twentyseventeen' ),
         'labels'              => $labels,
         // Features this CPT supports in Post Editor
-        'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'revisions', 'custom-fields', ),
+        /*'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'revisions', 'custom-fields', ),*/
         // You can associate this CPT with a taxonomy or custom taxonomy. 
-        'taxonomies'          => array( 'genres' ),
+        'taxonomies'          => array( 'listing_type' ),
         /* A hierarchical CPT is like Pages and can have
         * Parent and child items. A non-hierarchical CPT
         * is like Posts.
         */ 
-        'hierarchical'        => false,
+        /*'hierarchical'        => false,*/
         'public'              => true,
-        'show_ui'             => true,
-        'show_in_menu'        => true,
+        /*'show_ui'             => true,
+        'show_in_menu'        => true,*/
         'query_var'           => true,
         'rewrite'             => array( 'slug' => 'job_listings'),
-        'show_in_nav_menus'   => false,
+        /*'show_in_nav_menus'   => false,
         'show_in_admin_bar'   => true,
-        'menu_position'       => 6,
+        'menu_position'       => 6,*/
         'menu_icon'           => 'dashicons-hammer',
         'can_export'          => true,
-        'has_archive'         => false,
+        /*'has_archive'         => true,*/
         'exclude_from_search' => true,
-        'publicly_queryable'  => false,
-        'capability_type'     => 'post',
+        'publicly_queryable'  => true,
+        /*'capability_type'     => 'post',*/
     );
      
     // Registering your Custom Post Type
@@ -70,7 +70,7 @@ function custom_post_type() {
 * unnecessarily executed. 
 */
  
-add_action( 'init', 'custom_post_type', 0 );
+add_action( 'init', 'custom_post_type' );
 
 // create job listing taxonomy for the post type "job_listings"
 function create_job_taxonomies() {
